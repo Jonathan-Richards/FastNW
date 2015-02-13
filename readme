@@ -1,0 +1,18 @@
+/*
+* FastNW: Fast Needleman-Wunsch
+* Copyright (C) 2014 Jonathan Richards
+*
+* Written by Jonathan Richards, jonrds@gmail.com
+*
+*
+* Module containing a stripped-down implementation of Needleman–Wunsch
+* algorithm that only returns the best global alignment score, not any
+* alignments. Allows for gap extension penalites. Space scaling lowered
+* to O(min(n, m)) using the observation that only the current and
+* previous row of the score matrix must be stored.
+*
+* Future updates will allow for penalty matrices as well as the option
+* to return AN alignment using a modified Hirschberg algorithm. An
+* option to return all optimal alignments is unlikely, as both time
+* and space scaling guarantees are lost.
+*/
