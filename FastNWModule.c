@@ -1,12 +1,22 @@
 /**********************************************************************
-* Author: Jonathan Richards
-* Date: 1/1/2015
+* FastNW: Fast Needleman-Wunsch
+* Copyright (C) 2014 Jonathan Richards
 *
-* Module containing a stripped-down implementation of Needleman–Wunsch
-* algorithm that only returns the best global alignment score, not any
-* alignments. Allows for gap extension penalites. Space scaling lowered
-* to O(min(n, m)) using the observation that only the current and
-* previous row of the score matrix must be stored.
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License along
+* with this program; if not, write to the Free Software Foundation, Inc.,
+* 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+* 
+* Written by Jonathan Richards, jonrds@gmail.com
 **********************************************************************/
 
 #include <Python.h>
