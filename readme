@@ -29,12 +29,15 @@
 * memory for very large inputs.
 *
 *
-* Module is imported into python with "import FastNW"
-*
 * Installation:
 * python setup.py install
 *
-* 
+* Usage:
+* import FastNW
+* FastNW.method(string1, string2, match, mismatch, gap)
+* FastNW.method(string1, string2, match, mismatch, gap, gap_extend)
+*
+*
 * Future updates will allow for penalty matrices, non-integer
 * penalties, and the option to perform local alignments.
 * Additionally, extra error-checking will allow for the ability to
