@@ -5,14 +5,51 @@
 * Written by Jonathan Richards, jonrds@gmail.com
 *
 *
-* Module containing a stripped-down implementation of Needleman–Wunsch
-* algorithm that only returns the best global alignment score, not any
-* alignments. Allows for gap extension penalites. Space scaling lowered
-* to O(min(n, m)) using the observation that only the current and
-* previous row of the score matrix must be stored.
+* Module containing a fast and space-efficient implementation of
+* the Needleman-Wunsch algorithm. Extremely large alignments are
+* partitioned using an expansion of the Hirschberg algorithm. Unlike
+* the regular Hirschberg algorithm, gap-extend penalties are possible
+* (this only requires a small sacrifice in space-scaling which is
+* present in most implementations anyway). Also supports a quick
+* method for finding an alignment score without the alignment itself.
 *
-* Future updates will allow for penalty matrices as well as the option
-* to return AN alignment using a modified Hirschberg algorithm. An
-* option to return all optimal alignments is unlikely, as both time
-* and space scaling guarantees are lost.
+* This package mainly serves as an alternative to pairwise2 from the
+* Bio package, which runs much slower and runs out of memory rather
+* easily. THIS PACKAGE KEEPS THE CONVENTION THAT INSERTIONS AND
+* DELETIONS MAY NOT BE ADJACENT, THERE MUST BE AT LEAST ONE MATCH
+* OR MISMATCH BETWEEN THE TWO.
+*
+*
+* "score" returns the best global alignment score, not an alignment.
+*
+* "align" returns a global alignment and score, partitioning very
+* large alignments.
+*
+* "qalign" is as align, but without partitioning. May run out of
+* memory for very large inputs.
+*
+*
+* Module is imported into python with "import FastNW"
+*
+* Installation:
+* python setup.py install
+*
+* 
+* Future updates will allow for penalty matrices, non-integer
+* penalties, and the option to perform local alignments.
+* Additionally, extra error-checking will allow for the ability to
+* recover gracefully from most memory errors. An option to return
+* more than one optimal alignment is unlikely, as both time and
+* space scaling guarantees are lost.
+*
+*
+* Known bugs:
+* 
+* The Needleman-Wunsch algorithm currently uses ~2 times as much
+* memory as it needs (still much less than other implementations)
+* due to the matrix of scores being kept.
+* 
+* Partitioning currently must be exited early when a partition
+* is of length 1 or 0. In very odd cases, this could lead to the
+* program running out of memory.
 */
